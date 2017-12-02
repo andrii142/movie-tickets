@@ -17,7 +17,7 @@ public class MovieSessionDAO {
         return null;
     }
 
-
+    //bad solution
     public int findFreeTicketsByMovieNameAndAddress(String movieName, String address) {
         List<OrderMovieSession> ordersByMovieNameAndAddress = orderMovieSessionDAO.ordersByMovieNameAndAddress(movieName, address);
 
@@ -27,8 +27,34 @@ public class MovieSessionDAO {
     }
 
 
+    //id 1, ticketsOrdered = 2
+    //id 1, ticketsOrdered = 4
 
-    //TODO add movieSessions
+    public MovieSession update(MovieSession movieSession) {
+        int index = 0;
+        for (MovieSession ms : movieSessions) {
+            if (ms.getId() == movieSession.getId()) {
+                movieSessions.set(index, movieSession);
+                return movieSession;
+            }
+            index++;
+        }
+        return null;
+    }
 
+
+    public MovieSession save(MovieSession movieSession) throws Exception {
+        //check if not exist
+        //add
+
+        for (MovieSession ms : movieSessions) {
+            if (ms.equals(movieSession)) {
+                throw new Exception("Movie session " + movieSession + " already exists");
+            }
+        }
+
+        movieSessions.add(movieSession);
+        return movieSession;
+    }
 
 }

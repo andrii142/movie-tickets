@@ -2,10 +2,12 @@ public class User {
 
     private String sessionId;
     private String ipAddress;
+    private UserType userType;
 
     public User(String sessionId, String ipAddress) {
         this.sessionId = sessionId;
         this.ipAddress = ipAddress;
+        this.userType = UserType.USER;
     }
 
     public String getSessionId() {
@@ -14,5 +16,13 @@ public class User {
 
     public String getIpAddress() {
         return ipAddress;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    public UserType getUserType() {
+        return userType;
     }
 }
